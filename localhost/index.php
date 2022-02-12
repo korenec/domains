@@ -10,9 +10,13 @@
 <h1>This Test page index.php</h1>
 <?php
 
+ //-----------------------------------------------------------------------------
 
+$guess = $_POST['guess'];
+$numPetals = $_POST['numPetals'];
 
-/* //-----------------------------------------------------------------------------
+echo "$guess проверка $numPetals";
+
 printGreeting();
 printDice();
 printForm();
@@ -22,14 +26,15 @@ function printGreeting(){
     if (empty($guess)){
         echo "<h3>Welcome to Petals Around the Rose:_____\$guess is empty!!!</h3>";
     } else if ($guess == $numPetals){
-        echo "<h3>You Got It!</h3>";
+        echo "<h3>Победа !!!</h3>";
     } else {
 echo <<<HERE
 <h3>from last try: </h3>
 you guessed: $guess<br><br>
 -and the correct answer was: $numPetals petals around the rose<br>
+Проигрыш !
 HERE;
-    }
+}
 }
 
 function printDice(){
@@ -83,15 +88,22 @@ function printForm(){
     global $numPetals;
 echo <<<HERE
 <h3>How Many petals around the rose?</h3><br>
-<form method = "post">
-<input type = "text" name = "guess" value = "0">
-<input type = "hidden" name = "numPetals" value = "$numPetals">
+
+<form method = "post" action="index.php">
+<input type = "text" 
+        name = "guess" 
+        value = "">
+
+<input type = "hidden" 
+        name = "numPetals" 
+        value = "$numPetals">
 <br>
-<a href = "index.php" target = "helpPage">
-give me a hint</a>
+<input type="submit"
+        value="Оттослать!!">
+</form>
 HERE;
 }
-*/ //---------------------------------------------------------------------------------------------
+ //---------------------------------------------------------------------------------------------
 
 
 
@@ -123,25 +135,25 @@ HERE;
 
 
 
-/* //-----------------------------------------------
-$a = "I have a value";
-$b = "I have a value";
-print <<<HERE
-outside the function,<br>
-\$a is "$a", and<br>
-\$b is "$b"<br>
-HERE;
+ //-----------------------------------------------
+// $a = "I have a value";
+// $b = "I have a value";
+// print <<<HERE
+// outside the function,<br>
+// \$a is "$a", and<br>
+// \$b is "$b"<br>
+// HERE;
 
-myFunction();
-function myFunction(){
-global $a;  //глобальная переменная
-print <<<HERE
-inside the function,<br>
-\$a is "$a", and<br>
-\$b is "$b"<br>
-HERE;
-}
-*/
+// myFunction();
+// function myFunction(){
+// global $a;  //глобальная переменная
+// print <<<HERE
+// inside the function,<br>
+// \$a is "$a", and<br>
+// \$b is "$b"<br>
+// HERE;
+// }
+
 /* // ------------------------------------------------------------------------------------------
 // Возвращаем значение: функции chorus()  страница 103
 function chorus(){
@@ -155,21 +167,21 @@ return $output;
 }
 echo chorus();
 */
-/* //------------------------------------------------------------------------------------------
+ //------------------------------------------------------------------------------------------
 // страница 96
-$userName = $_GET['userName']; // пример не работает без этой строки !!!
-if (empty($userName)){
-print <<<HERE
-<form>
-Please enter your name:
-<input type = "text" name = "userName"><br>
-<input type = "submit">
-</form>
-HERE;
-} else {
-print "<h3>Hi there, $userName!</h3>";
-}
-*/
+// $userName = $_GET['userName']; // пример не работает без этой строки !!!
+// if (empty($userName)){
+// print <<<HERE
+// <form>
+// Please enter your name:
+// <input type = "text" name = "userName"><br>
+// <input type = "submit">
+// </form>
+// HERE;
+// } else {
+// print "<h3>Hi there, $userName!</h3>";
+// }
+
 //--------------------------------------------------------------------------------------------------
 /* // страница 101
 print verse(1);
@@ -217,25 +229,30 @@ return $output;
 */
 
 //-------------------------------------------------------------------------------------------------
-/*
-function verse1(){
-print <<<HERE
-old man old man he shet<br>
-lala old man shet<br><br><br>
-HERE;
-}
-function verse2(){
-print <<<HERE
-old man222 old man222 he shet<br>
-lala old222 man shet<br><br><br>
-HERE;
-}
-function chorus(){
-print <<<HERE
-...with a knick-knack chorus<br><br><br>
-HERE;
-}
-*/
+
+// function verse1(){
+// print <<<HERE
+// old man old man he shet<br>
+// lala old man shet<br><br><br>
+// HERE;
+// }
+// function verse2(){
+// print <<<HERE
+// old man222 old man222 he shet<br>
+// lala old222 man shet<br><br><br>
+// HERE;
+// }
+// function chorus(){
+// print <<<HERE
+// ...with a knick-knack chorus<br><br><br>
+// HERE;
+// }
+
+
+
+
+
+
 
 ?>
 
