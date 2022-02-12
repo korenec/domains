@@ -12,6 +12,24 @@
 
 
 
+printGreeting();
+// printDice();
+// printForm();
+
+function printGreeting(){
+    global $guess, $numPetals;
+    if (empty($guess)){
+        echo "<h3>Welcome to Petals Around the Rose:_____\$guess is empty!!!</h3>";
+    } else if ($guess == $numPetals){
+        echo "<h3>You Got It!</h3>";
+    } else {
+echo <<<HERE
+<h3>from last try: </h3>
+you guessed: $guess<br><br>
+-and the correct answer was: $numPetals petals around the rose<br>
+HERE;
+    }
+}
 
 
 
@@ -28,6 +46,74 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $x = rand(1,5);
+
+// $h = "Hellicopter";
+// $s = "Silent";
+
+// switch($x){
+//     case 1:
+//         echo $h;
+//         break;
+//     case 2:
+//         echo $s;
+//         break;
+//     case 3:
+//         echo "It is 3 @@";
+//         break;
+//     case 4:
+//         echo $h, $s;
+//         break;
+//     case 5:
+//         echo "it is imposible", "<br>", "real is cool<br>", "yahooohh";
+//         break;
+//     default:
+//     echo "it is default!!";
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+/* //-----------------------------------------------
+$a = "I have a value";
+$b = "I have a value";
+print <<<HERE
+outside the function,<br>
+\$a is "$a", and<br>
+\$b is "$b"<br>
+HERE;
+
+myFunction();
+function myFunction(){
+global $a;  //глобальная переменная
+print <<<HERE
+inside the function,<br>
+\$a is "$a", and<br>
+\$b is "$b"<br>
+HERE;
+}
+*/
 /* // ------------------------------------------------------------------------------------------
 // Возвращаем значение: функции chorus()  страница 103
 function chorus(){
