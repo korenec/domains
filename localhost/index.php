@@ -7,31 +7,39 @@
     <title>Hi user!</title>
 </head>
 <body>
-<h1>This Test page index.php</h1>
+<h5>This Test page index.php</h5>
 <?php
 
  //-----------------------------------------------------------------------------
-
 $guess = $_POST['guess'];
 $numPetals = $_POST['numPetals'];
 
-echo "$guess проверка $numPetals";
+$timme = time();
+$nowTime = $timme - $_POST['timme'];
+echo "<center>";
+echo "<br>";
+echo "Вы думали $nowTime секунд ";
+echo "<br>";
 
 printGreeting();
 printDice();
 printForm();
 
 function printGreeting(){
-    global $guess, $numPetals;
+    global $guess, $numPetals, $nowTime;
     if (empty($guess)){
-        echo "<h3>Welcome to Petals Around the Rose:_____\$guess is empty!!!</h3>";
+        echo "<h3>Вы зашли первый раз в игру \"Угадай сколько лепестков у розы\"</h3>";
     } else if ($guess == $numPetals){
-        echo "<h3>Победа !!!</h3>";
+        if ($nowTime <= 6){
+            echo "<h1>Победа !!!</h1>";
+        } else {
+            echo "<h2>Вы слишком долго думали и проиграли !</h2>";
+        }
     } else {
 echo <<<HERE
-<h3>from last try: </h3>
-you guessed: $guess<br><br>
--and the correct answer was: $numPetals petals around the rose<br>
+<h2>Неверно !</h2>
+Ваш ответ : $guess <br>
+Правильный ответ: $numPetals лепестков у розы !<br>
 Проигрыш !
 HERE;
 }
@@ -40,7 +48,7 @@ HERE;
 function printDice(){
     global $numPetals;
 
-    echo "<h3>New Roll:</h3>";
+    echo "<br>";
     $numPetals = 0;
 
     $die1 = rand(1,6);
@@ -85,24 +93,28 @@ function calcNumPetals($value){
 }
 
 function printForm(){
-    global $numPetals;
+    global $numPetals, $timme;
 echo <<<HERE
-<h3>How Many petals around the rose?</h3><br>
+<h3> Сколько лепестков розы Вы насчитали ? </h3><br>
 
 <form method = "post" action="index.php">
 <input type = "text" 
         name = "guess" 
         value = "">
 
+<input type = "hidden" name = "timme" value = "$timme">
+
 <input type = "hidden" 
         name = "numPetals" 
         value = "$numPetals">
 <br>
 <input type="submit"
-        value="Оттослать!!">
+        value="Отослать!!">
+
 </form>
 HERE;
 }
+echo "</center>";
  //---------------------------------------------------------------------------------------------
 
 
