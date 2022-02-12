@@ -12,9 +12,10 @@
 
 
 
+/* //-----------------------------------------------------------------------------
 printGreeting();
-// printDice();
-// printForm();
+printDice();
+printForm();
 
 function printGreeting(){
     global $guess, $numPetals;
@@ -31,31 +32,66 @@ HERE;
     }
 }
 
+function printDice(){
+    global $numPetals;
 
+    echo "<h3>New Roll:</h3>";
+    $numPetals = 0;
 
+    $die1 = rand(1,6);
+    $die2 = rand(1,6);
+    $die3 = rand(1,6);
+    $die4 = rand(1,6);
+    $die5 = rand(1,6);
+    $die6 = rand(1,6);
 
+    showDie($die1);
+    showDie($die2);
+    showDie($die3);
+    showDie($die4);
+    showDie($die5);
 
+    echo "<br><br>";
 
+    calcNumPetals($die1);
+    calcNumPetals($die2);
+    calcNumPetals($die3);
+    calcNumPetals($die4);
+    calcNumPetals($die5);
+}
 
+function showDie($value){
+echo <<<HERE
+<img src = "die$value.jpg" herght = 100 width = 100>
+HERE;
+}
 
+function calcNumPetals($value){
+    global $numPetals;
 
+    switch ($value){
+        case 3:
+            $numPetals += 2;
+            break;
+        case 5:
+            $numPetals +=4;
+            break;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function printForm(){
+    global $numPetals;
+echo <<<HERE
+<h3>How Many petals around the rose?</h3><br>
+<form method = "post">
+<input type = "text" name = "guess" value = "0">
+<input type = "hidden" name = "numPetals" value = "$numPetals">
+<br>
+<a href = "index.php" target = "helpPage">
+give me a hint</a>
+HERE;
+}
+*/ //---------------------------------------------------------------------------------------------
 
 
 
@@ -83,14 +119,6 @@ HERE;
 //     default:
 //     echo "it is default!!";
 // }
-
-
-
-
-
-
-
-
 
 
 
