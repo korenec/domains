@@ -4,117 +4,140 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi user!</title>
+    <title>index.php</title>
 </head>
 <body>
-<h5>This Test page index.php</h5>
+<center>
 <?php
 
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------------
+
+// $sum;
+// for ($i = 1; $i < 1000; $i++){   
+//     if ($i%3 && $i%5){      
+//     } else {
+//         echo "$i\n,\n";
+//         $sum += $i;
+//     }
+// }
+// echo "Сумма=\n", $sum, "<br>";
+
  //-----------------------------------------------------------------------------
-$guess = $_POST['guess'];
-$numPetals = $_POST['numPetals'];
+// $guess = $_POST['guess'];
+// $numPetals = $_POST['numPetals'];
 
-$timme = time();
-$nowTime = $timme - $_POST['timme'];
-echo "<center>";
-echo "<br>";
-echo "Вы думали $nowTime секунд ";
-echo "<br>";
+// $timme = time();
+// $nowTime = $timme - $_POST['timme'];
+// echo "<center>";
+// echo "<br>";
+// echo "Вы думали $nowTime секунд ";
+// echo "<br>";
 
-printGreeting();
-printDice();
-printForm();
+// printGreeting();
+// printDice();
+// printForm();
 
-function printGreeting(){
-    global $guess, $numPetals, $nowTime;
-    if (empty($guess)){
-        echo "<h3>Вы зашли первый раз в игру \"Угадай сколько лепестков у розы\"</h3>";
-    } else if ($guess == $numPetals){
-        if ($nowTime <= 6){
-            echo "<h1>Победа !!!</h1>";
-        } else {
-            echo "<h2>Вы слишком долго думали и проиграли !</h2>";
-        }
-    } else {
-echo <<<HERE
-<h2>Неверно !</h2>
-Ваш ответ : $guess <br>
-Правильный ответ: $numPetals лепестков у розы !<br>
-Проигрыш !
-HERE;
-}
-}
+// function printGreeting(){
+//     global $guess, $numPetals, $nowTime;
+//     if (empty($guess)){
+//         echo "<h3>Вы зашли первый раз в игру \"Угадай сколько лепестков у розы\"</h3>";
+//     } else if ($guess == $numPetals){
+//         if ($nowTime <= 6){
+//             echo "<h1>Победа !!!</h1>";
+//         } else {
+//             echo "<h2>Вы слишком долго думали и проиграли !</h2>";
+//         }
+//     } else {
+// echo <<<HERE
+// <h2>Неверно !</h2>
+// Ваш ответ : $guess <br>
+// Правильный ответ: $numPetals лепестков у розы !<br>
+// Проигрыш !
+// HERE;
+// }
+// }
 
-function printDice(){
-    global $numPetals;
+// function printDice(){
+//     global $numPetals;
 
-    echo "<br>";
-    $numPetals = 0;
+//     echo "<br>";
+//     $numPetals = 0;
 
-    $die1 = rand(1,6);
-    $die2 = rand(1,6);
-    $die3 = rand(1,6);
-    $die4 = rand(1,6);
-    $die5 = rand(1,6);
-    $die6 = rand(1,6);
+//     $die1 = rand(1,6);
+//     $die2 = rand(1,6);
+//     $die3 = rand(1,6);
+//     $die4 = rand(1,6);
+//     $die5 = rand(1,6);
+//     $die6 = rand(1,6);
 
-    showDie($die1);
-    showDie($die2);
-    showDie($die3);
-    showDie($die4);
-    showDie($die5);
+//     showDie($die1);
+//     showDie($die2);
+//     showDie($die3);
+//     showDie($die4);
+//     showDie($die5);
 
-    echo "<br><br>";
+//     echo "<br><br>";
 
-    calcNumPetals($die1);
-    calcNumPetals($die2);
-    calcNumPetals($die3);
-    calcNumPetals($die4);
-    calcNumPetals($die5);
-}
+//     calcNumPetals($die1);
+//     calcNumPetals($die2);
+//     calcNumPetals($die3);
+//     calcNumPetals($die4);
+//     calcNumPetals($die5);
+// }
 
-function showDie($value){
-echo <<<HERE
-<img src = "die$value.jpg" herght = 100 width = 100>
-HERE;
-}
+// function showDie($value){
+// echo <<<HERE
+// <img src = "die$value.jpg" herght = 100 width = 100>
+// HERE;
+// }
 
-function calcNumPetals($value){
-    global $numPetals;
+// function calcNumPetals($value){
+//     global $numPetals;
 
-    switch ($value){
-        case 3:
-            $numPetals += 2;
-            break;
-        case 5:
-            $numPetals +=4;
-            break;
-    }
-}
+//     switch ($value){
+//         case 3:
+//             $numPetals += 2;
+//             break;
+//         case 5:
+//             $numPetals +=4;
+//             break;
+//     }
+// }
 
-function printForm(){
-    global $numPetals, $timme;
-echo <<<HERE
-<h3> Сколько лепестков розы Вы насчитали ? </h3><br>
+// function printForm(){
+//     global $numPetals, $timme;
+// echo <<<HERE
+// <h3> Сколько лепестков розы Вы насчитали ? </h3><br>
 
-<form method = "post" action="index.php">
-<input type = "text" 
-        name = "guess" 
-        value = "">
+// <form method = "post" action="index.php">
+// <input type = "text" 
+//         name = "guess" 
+//         value = "">
 
-<input type = "hidden" name = "timme" value = "$timme">
+// <input type = "hidden" name = "timme" value = "$timme">
 
-<input type = "hidden" 
-        name = "numPetals" 
-        value = "$numPetals">
-<br>
-<input type="submit"
-        value="Отослать!!">
+// <input type = "hidden" 
+//         name = "numPetals" 
+//         value = "$numPetals">
+// <br>
+// <input type="submit"
+//         value="Отослать!!">
 
-</form>
-HERE;
-}
-echo "</center>";
+// </form>
+// HERE;
+// }
+// echo "</center>";
  //---------------------------------------------------------------------------------------------
 
 
@@ -259,15 +282,7 @@ return $output;
 // ...with a knick-knack chorus<br><br><br>
 // HERE;
 // }
-
-
-
-
-
-
-
 ?>
-
-<br>
+</center>
 </body>
 </html>
