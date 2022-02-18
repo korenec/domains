@@ -5,30 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index.php</title>
+    <style type = "text/css">
+        body {
+            background: green;
+            color: tan;
+        }
+    </style>
 </head>
 <body>
 <center>
 <?php
 
+$txtBoxCounter = $_GET['txtBoxCounter'];
+$hdnCounter = $_GET['hdnCounter'];
 
-$masiv[0] = "Somalia";
-$masiv[1] = "Sudan";
-$masiv[2] = "Mauritania";
-$masiv[3] = "Pakistan";
-$masiv[4] = "India";
+echo "<form>";
+$txtBoxCounter++;
+$hdnCounter++;
+echo <<<HERE
 
-for ($i = 0; $i < 5; $i++){
-    echo "$i\n: $masiv[$i]<br>\n";
-}
+<input type = "text" 
+       name = "txtBoxCounter" 
+       value = "$txtBoxCounter">
 
-$binar = array("000", "001", "010", "011");
-for ($i = 0; $i < count($binar); $i++){
-    echo "$i: $binar[$i]<br>";
-}
+<input type = "hidden"
+       name = "hdnCounter" 
+       value = "$hdnCounter">
+
+<h3>The hidden value is $hdnCounter</h3>
+
+<input type = "submit" 
+       value = "Прибавить +1">
+
+HERE;
+echo "</form>";
 
 
+//---------------------------------------------------------------
+// $place = array(
+//     "",
+//     "on my thumb",
+//     "on my shoe",
+//     "on my knee",
+//     "on a door"
+// );
+// for ($verse = 1; $verse <= 4; $verse++){
+//     echo "This old man, He played $verse<br>
+//     He played knick-knack $place[$verse]<br>
+//     ...with a knick, knack, pady-whck<br>
+//     give a dog a  bone<br>
+//     This old man came rolling home<br><br>";
+// }
 
+//--------------------------------------------------------------
+// $rok[1] = "QQQQQ";
+// $rok[2] = "wwwwww";
+// $rok[3] = "eeeeee";
 
+// for ($i = 1; $i <= 3; $i++){
+//     echo "$i : $rok[$i]<br>";
+// }
+// echo "<br><br>";
+
+// $test = array("qqqqqq", "wwwwwww", "eeeeeeee", "rrrrrrrr");
+
+// for ($i = 0; $i < count($test); $i++){
+//     echo "$i\n : $test[$i]<br>";
+// }
 //-------------------------------------------------------------
 // $i =TRUE;
 // while ($i){
