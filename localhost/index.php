@@ -7,8 +7,8 @@
     <title>index.php</title>
     <style type = "text/css">
         body {
-            background: green;
-            color: tan;
+            background: #aacc77;
+            color: purple;
         }
     </style>
 </head>
@@ -22,168 +22,194 @@
 
 
 
-echo "<form>";
+//------------------------------------------------------------------------------------
+// Игра угадай число компуктера !!
 
-// Poker
-$cash = $_GET['cash'];
-$secondRoll = $_GET['secondRoll'];
-$numFives = $_GET['numFives'];
-$numFours = $_GET['numFours'];
-$numPairs = $_GET['numPairs'];
-$numVals = $_GET['numVals'];
-$numPetals = $_GET['numPetals'];
-$numThrees = $_GET['numThrees'];
-$payoff = $_GET['payoff'];
-$theFile = $_GET['theFile'];
-$keepIt = $_GET['keepIt'];
-$die = $_GET['die'];
+// $num = $_GET['num'];
+// $player = $_GET['player'];
+
+// echo "<form>";
+// if (empty($num)){
+//     $num = rand(1,10);
+//     echo "Отгадай число от 1 до 10 <br>";
+// }
+
+// echo <<<HERE
+// <input type = "text" name = "player" value = "$player">
+// <input type = "hidden" name = "num" value = "$num">
+// <input type = "submit">
+// HERE;
+// if ($num == $player){
+//     echo "<br>Угадал !";
+// } else if ($num < $player){
+//     echo "<br> Загаданое число меньше вашего !";
+// } else if ($num > $player){
+//     echo "<br> Загаданое число Больше вашего !";
+// }
+// echo "</form>";
+
+// //------------------------------------------------------------------------------------
+// echo "<form>";
+// // Poker
+// $cash = $_GET['cash'];
+// $secondRoll = $_GET['secondRoll'];
+// $numFives = $_GET['numFives'];
+// $numFours = $_GET['numFours'];
+// $numPairs = $_GET['numPairs'];
+// $numVals = $_GET['numVals'];
+// $numPetals = $_GET['numPetals'];
+// $numThrees = $_GET['numThrees'];
+// $payoff = $_GET['payoff'];
+// $theFile = $_GET['theFile'];
+// $keepIt = $_GET['keepIt'];
+// $die = $_GET['die'];
 
 
 
-if (empty($cash)){
-    $cash = 100;
-}
+// if (empty($cash)){
+//     $cash = 100;
+// }
 
-rollDice();
+// rollDice();
 
-if ($secondRoll == TRUE){
-    echo "<h2>Второй бросок</h2>\n";
-    $secondRoll = FALSE;
-    evaluate();
-} else {
-    echo "<h2>Первый бросок</h2>\n";
-    $secondRoll = TRUE;
-}
+// if ($secondRoll == TRUE){
+//     echo "<h2>Второй бросок</h2>\n";
+//     $secondRoll = FALSE;
+//     evaluate();
+// } else {
+//     echo "<h2>Первый бросок</h2>\n";
+//     $secondRoll = TRUE;
+// }
 
-printStuff();
+// printStuff();
 
-function rollDice(){
-    global $die, $secondRoll, $keepIt;
-    echo "<table border = 1><td><tr>";
-    for ($i = 0; $i < 5; $i++){
-        if ($keepIt[$i] == ""){
-            $die[$i] = rand(1,6);
-        } else {
-            $die[$i] = $keepIt[$i];
-        }
-        $theFile = "die" . $die[$i] . ".jpg";
-        echo <<<HERE
-<td>
-<img src = "$theFile" height = 50 width = 50><br>
-HERE;
-if ($secondRoll == FALSE){
-echo <<<HERE
-<input type = "checkbox" name = "keepIt[$i]" value = $die[$i]>
-</td>
-HERE;
-}
-}
-echo <<<HERE
-</tr></td>
-<tr>
-<td colspan = "5">
-<center>
-<input type = "submit" value = "Перебросить кости">
-</center>
-</td>
-</tr>
-</table>
-HERE;
-}
+// function rollDice(){
+//     global $die, $secondRoll, $keepIt;
+//     echo "<table border = 1><td><tr>";
+//     for ($i = 0; $i < 5; $i++){
+//         if ($keepIt[$i] == ""){
+//             $die[$i] = rand(1,6);
+//         } else {
+//             $die[$i] = $keepIt[$i];
+//         }
+//         $theFile = "die" . $die[$i] . ".jpg";
+//         echo <<<HERE
+// <td>
+// <img src = "$theFile" height = 50 width = 50><br>
+// HERE;
+// if ($secondRoll == FALSE){
+// echo <<<HERE
+// <input type = "checkbox" name = "keepIt[$i]" value = $die[$i]>
+// </td>
+// HERE;
+// }
+// }
+// echo <<<HERE
+// </tr></td>
+// <tr>
+// <td colspan = "5">
+// <center>
+// <input type = "submit" value = "Перебросить кости">
+// </center>
+// </td>
+// </tr>
+// </table>
+// HERE;
+// }
 
-function evaluate(){
-    global $die, $cash;
-    $payoff = 0;
-    $cash -= 2;
-    $numVals = array(6);
-    for ($theVal = 1; $theVal <= 6; $theVal++){
-        for ($dieNum = 0; $dieNum < 5; $dieNum++){
-            if ($die[$dieNum] == $theVal){
-                $numVals[$theVal]++;
-            }
-        }
-    }
-    // for ($i = 1; $i <= 6; $i++){
-    //     echo "$i: $numVals[$i]<br>\n";
-    // }
-    $numPairs = 0;
-    $numThrees = 0;
-    $numFours = 0;
-    $numFives = 0;
+// function evaluate(){
+//     global $die, $cash;
+//     $payoff = 0;
+//     $cash -= 5;
+//     $numVals = array(6);
+//     for ($theVal = 1; $theVal <= 6; $theVal++){
+//         for ($dieNum = 0; $dieNum < 5; $dieNum++){
+//             if ($die[$dieNum] == $theVal){
+//                 $numVals[$theVal]++;
+//             }
+//         }
+//     }
+//     // for ($i = 1; $i <= 6; $i++){  // участо кода для проверки
+//     //     echo "$i: $numVals[$i]<br>\n";
+//     // } 
+//     $numPairs = 0;
+//     $numThrees = 0;
+//     $numFours = 0;
+//     $numFives = 0;
 
-    for ($i = 1; $i <= 6; $i++){
-        switch ($numVals[$i]){
-            case 2:
-                $numPairs++;
-                break;
-            case 3:
-                $numThrees++;
-                break;
-            case 4:
-                $numFours++;
-                break;
-            case 5:
-                $numFives++;
-                break;
-        }
-    }
-    // Проверяем есть ли две пары
-    if ($numPairs == 2){
-        echo "у вас две пары!<br>\n";
-        $payoff = 1;
-    }
-    //проверка на три пары
-    if ($numThrees == 1){
-        if ($numPairs == 1){
-            echo "у вас full house!<br>\n";
-            $payoff = 5;
-        } else {
-            echo "You have three of a kind!<br>\n";
-            $payoff = 2;
-        }
-    }
-    // ищем четыре одинаковых
-    if ($numFours == 1){
-        echo "You have four of a kind!<br>\n";
-        $payoff = 5;
-    }
-    // ищем 5 одинаковых
-    if ($numFives == 1){
-        echo "You got five of a kind!<br>\n";
-        $payoff = 10;
-    }
-    // ищем стрит 
-    if (($numVals[1] == 1)
-    && ($numVals[2] == 1)
-    && ($numVals[3] == 1)
-    && ($numVals[4] == 1)
-    && ($numVals[5] == 1)){
-        echo "You have a straight!<br>\n";
-        $payoff = 10;
-    }
-    if (($numVals[2] == 1)
-    && ($numVals[3] == 1)
-    && ($numVals[4] == 1)
-    && ($numVals[5] == 1)
-    && ($numVals[6] == 1)){
-        echo "You have a straight!<br>\n";
-        $payoff = 10;
-    }
-    echo "You bet 2<br>\n";
-    echo "Payoff is $payoff<br>\n";
-    $cash += $payoff;
-}
+//     for ($i = 1; $i <= 6; $i++){
+//         switch ($numVals[$i]){
+//             case 2:
+//                 $numPairs++;
+//                 break;
+//             case 3:
+//                 $numThrees++;
+//                 break;
+//             case 4:
+//                 $numFours++;
+//                 break;
+//             case 5:
+//                 $numFives++;
+//                 break;
+//         }
+//     }
+//     // Проверяем есть ли две пары
+//     if ($numPairs == 2){
+//         echo "у вас две пары!<br>\n";
+//         $payoff = 1;
+//     }
+//     //проверка на три пары
+//     if ($numThrees == 1){
+//         if ($numPairs == 1){
+//             echo "у вас full house!<br>\n";
+//             $payoff = 5;
+//         } else {
+//             echo "You have three of a kind!<br>\n";
+//             $payoff = 2;
+//         }
+//     }
+//     // ищем четыре одинаковых
+//     if ($numFours == 1){
+//         echo "You have four of a kind!<br>\n";
+//         $payoff = 5;
+//     }
+//     // ищем 5 одинаковых
+//     if ($numFives == 1){
+//         echo "You got five of a kind!<br>\n";
+//         $payoff = 10;
+//     }
+//     // ищем стрит 
+//     if (($numVals[1] == 1)
+//     && ($numVals[2] == 1)
+//     && ($numVals[3] == 1)
+//     && ($numVals[4] == 1)
+//     && ($numVals[5] == 1)){
+//         echo "You have a straight!<br>\n";
+//         $payoff = 10;
+//     }
+//     if (($numVals[2] == 1)
+//     && ($numVals[3] == 1)
+//     && ($numVals[4] == 1)
+//     && ($numVals[5] == 1)
+//     && ($numVals[6] == 1)){
+//         echo "You have a straight!<br>\n";
+//         $payoff = 10;
+//     }
+//     echo "You bet 2<br>\n";
+//     echo "Payoff is $payoff<br>\n";
+//     $cash += $payoff;
+// }
 
-function printStuff(){
-    global $cash, $secondRoll;
-    echo "Cash: $cash\n";
-    // сохраняем переменные в скрытых полях
-    echo <<<HERE
-<input type = "hidden" name = "secondRoll" value = "$secondRoll">
-<input type = "hidden" name = "cash" value = "$cash">
-HERE;
-}
-echo "</form>";
+// function printStuff(){
+//     global $cash, $secondRoll;
+//     echo "Cash: $cash\n";
+//     // сохраняем переменные в скрытых полях
+//     echo <<<HERE
+// <input type = "hidden" name = "secondRoll" value = "$secondRoll">
+// <input type = "hidden" name = "cash" value = "$cash">
+// HERE;
+// }
+// echo "</form>";
 //---------------------------------------------------------
 // $txtBoxCounter = $_GET['txtBoxCounter'];
 // $hdnCounter = $_GET['hdnCounter'];
@@ -253,13 +279,11 @@ echo "</form>";
 
 //----------------------------------------------------------------------------------
 
-// $sum;
 // for ($i = 1; $i < 1000; $i++){   
-//     if ($i%3 && $i%5){      
-//     } else {
+//     if (($i%3)==0 || ($i%5)==0){
 //         echo "$i\n,\n";
-//         $sum += $i;
-//     }
+//         $sum += $i;      
+//     } 
 // }
 // echo "Сумма=\n", $sum, "<br>";
 
