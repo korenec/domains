@@ -25,28 +25,28 @@
 //------------------------------------------------------------------------------------
 // Игра угадай число компуктера !!
 
-// $num = $_GET['num'];
-// $player = $_GET['player'];
+$num = $_GET['num'];
+$player = $_GET['player'];
 
-// echo "<form>";
-// if (empty($num)){
-//     $num = rand(1,10);
-//     echo "Отгадай число от 1 до 10 <br>";
-// }
+echo "<form>";
+if (empty($num)){
+    $num = rand(1,10);
+    echo "Отгадай число от 1 до 10 <br>";
+}
 
-// echo <<<HERE
-// <input type = "text" name = "player" value = "$player">
-// <input type = "hidden" name = "num" value = "$num">
-// <input type = "submit">
-// HERE;
-// if ($num == $player){
-//     echo "<br>Угадал !";
-// } else if ($num < $player){
-//     echo "<br> Загаданое число меньше вашего !";
-// } else if ($num > $player){
-//     echo "<br> Загаданое число Больше вашего !";
-// }
-// echo "</form>";
+echo <<<HERE
+<input type = "text" name = "player" value = "$player">
+<input type = "hidden" name = "num" value = "$num">
+<input type = "submit">
+HERE;
+if ($num == $player){
+    echo "<br>Угадал !";
+} else if ($num < $player){
+    echo "<br> Загаданое число меньше вашего !";
+} else if ($num > $player){
+    echo "<br> Загаданое число Больше вашего !";
+}
+echo "</form>";
 
 // //------------------------------------------------------------------------------------
 // echo "<form>";
