@@ -22,7 +22,7 @@
 
 
 
-
+echo "<form>";
 
 // Poker
 $cash = $_GET['cash'];
@@ -183,7 +183,7 @@ function printStuff(){
 <input type = "hidden" name = "cash" value = "$cash">
 HERE;
 }
-
+echo "</form>";
 //---------------------------------------------------------
 // $txtBoxCounter = $_GET['txtBoxCounter'];
 // $hdnCounter = $_GET['hdnCounter'];
