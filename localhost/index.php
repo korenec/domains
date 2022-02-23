@@ -103,9 +103,9 @@ function evaluate(){
             }
         }
     }
-    for ($i = 1; $i <= 6; $i++){
-        echo "$i: $numVals[$i]<br>\n";
-    }
+    // for ($i = 1; $i <= 6; $i++){
+    //     echo "$i: $numVals[$i]<br>\n";
+    // }
     $numPairs = 0;
     $numThrees = 0;
     $numFours = 0;
